@@ -20,31 +20,36 @@
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "test-storybook": "test-storybook",
     "init-msw": "msw init public/"
   },
   "dependencies": {
-    "vue": "^3.2.47"
+    "pinia": "^2.0.34",
+    "vue": "^3.3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
-    "@storybook/addon-essentials": "^7.0.6",
-    "@storybook/addon-interactions": "^7.0.6",
-    "@storybook/addon-links": "^7.0.6",
-    "@storybook/blocks": "^7.0.6",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "@storybook/vue3": "^7.0.6",
-    "@storybook/vue3-vite": "^7.0.6",
-    "@vitejs/plugin-vue": "^4.0.0",
+    "@storybook/addon-essentials": "^7.1.1",
+    "@storybook/addon-interactions": "^7.1.1",
+    "@storybook/addon-links": "^7.1.1",
+    "@storybook/blocks": "^7.1.1",
+    "@storybook/test-runner": "^0.12.0",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/vue3": "^7.1.1",
+    "@storybook/vue3-vite": "^7.1.1",
+    "@vitejs/plugin-vue": "^4.2.0",
     "@vue/eslint-config-prettier": "^7.1.0",
+    "cli-table3": "^0.6.3",
     "eslint": "^8.34.0",
-    "eslint-plugin-storybook": "^0.6.11",
+    "eslint-plugin-storybook": "^0.6.13",
     "eslint-plugin-vue": "^9.9.0",
     "msw": "^1.2.1",
     "msw-storybook-addon": "^1.8.0",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.6",
-    "vite": "^4.1.4"
+    "storybook": "^7.1.1",
+    "vite": "^4.3.5",
+    "vue-demi": "^0.14.5"
   }
 }
