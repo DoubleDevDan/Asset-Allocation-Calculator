@@ -1,0 +1,23 @@
+
+The goal of this exercise is to create simple asset allocation calculator as a small web app.
+
+The app's functionality can be summarized as follows:
+ 
+	"I have $X I want to keep in BTC and ETH, 70/30 split.  How many of each should I buy?"
+
+There is a wireframe at ./asset_allocation_wireframe.png to illustrate how this app might look, but it's not intended to be a high fidelity mock. Feel free to build the best UX you can in the time allotted.  
+
+
+In order to perform any necessary currency conversion, you might access exchange rates at:
+
+	https://api.coinbase.com/v2/exchange-rates?currency=USD
+
+
+
+
+
+
+
+
+
+
