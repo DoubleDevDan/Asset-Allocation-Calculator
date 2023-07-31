@@ -2,7 +2,7 @@
   <div>
     <div v-if="error" class="page lists-show">
       <div class="wrapper-message">
-        <span class="icon-face-sad" />
+        <span class="icon-face-happy" />
         <p class="title-message">Oh no!</p>
         <p class="subtitle-message">Something went wrong</p>
       </div>
