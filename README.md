@@ -171,6 +171,7 @@ Before diving into the JustWorks take-home assignment, it was essential to gain 
 
   - My current go-to for building UIs is Material UI. It is a React UI framework that provides a set of React components that implement Google's Material Design specification. It is a great framework for building UIs quickly and efficiently.
   - However, since this project is built using Vue.js, I decided to use the Vue Material library, which provides a set of Vue components that implement the Material Design specification.
+  - That library was not supported on the latest version of Vue, and while I found solutions such as https://github.com/mikimoresi/vue3-material I decided that for the simplistic nature of this application we would do without a UI framework and instead style ourselves.
 
 ### Implemenation: App Development Process
 
@@ -183,6 +184,29 @@ npm init vue@latest
 ```
 
 per the Vue.js documentation. This command creates a new Vue.js project using the latest version of Vue.js. It also provides the option to add additional features to the project, such as TypeScript, Progressive Web App (PWA) support, and Router support. For this project, I chose to add TypeScript support to the project. The script's README can be found at README_2.md.
+
+- Options API: Using this command initialized the project with beginner components utilizing the Options API. Doing some research, I found that Options API is the API used in Vue.js 2.x and is still supported in Vue.js 3.x. It is the API that most developers are familiar with when working with Vue.js. It is a great API for beginners to learn Vue.js, but it can become difficult to manage as the application grows in size and complexity. For these reasons, I decided to continue to use Options API, forgoing the Composition API for this project but acknowledging learning the Composition API is a priority for future projects.
+
+#### API Integration
+
+The main HTTP Request that powers the functionality on the application is the GET request to https://api.coinbase.com/v2/exchange-rates . By researching their API documentation and making some sample calls in Postman, I was able to determine the structure of the response and the data that I would need to extract from the response to power the application.
+
+#### Style Guide
+
+For this project, I wanted to try and make the application mimic JustWorks style guide. However, without much personal exposure I decided to leverage https://order.design/project/justworks to help capture the style guide. This tool allows you to capture the style guide of any website by providing the URL of the website. It then provides a style guide that can be used to build out the UI. The style guide was captured as a digital asset (although the live site provides better functionality) and can be found at assets/style_guide.pdf. Building out better documentation in a text form for the style guide could be a future improvement.
+
+Support for 'dark' mode was avoided for the initial scope of this project. However, it is something that could be added in the future. TODOs have been added where this could be implemented, but it would require some additional work to finish the implementation (eg adding a dark mode version of the app icon)
+
+- Typeface
+
+Justworks appears to use Oatley as their primary typeface. This typeface is not widely available, so I decided to use Roboto as a substitute. Roboto is a typeface that is available in Google Fonts and is a typeface that is commonly used in Material Design. It is a great typeface for UIs and is a good substitute for Oatley.
+
+#### Icon Library
+
+- Application Icon
+  For the application Icon itself, Midjourney was leveraged using the prompt:
+  `icon for an Asset Allocation Calculator clear screen application 3D icon, isometric, gradient glass, colourful color matching of all of #B6E5FF #15246D #FFDB7B #F3B715 #9E6405 #65C9A3 #00A66C #017A4E #FF9F82 #DF5A31 #8E2F1A #BAAAF9 #8A73E5 #452C6C, white background, 3D rendering, C4D, blender`
+  borrowing colors from the JustWorks style guide. This asset was then exported as a PNG adding a transparency layer, and then added to the project, along with a simple favicon solution (a more exhaustive favicon solution could be implemented in the future).
 
 ## Take Home Assignment - JustWorks
 
@@ -200,5 +224,8 @@ A wireframe illustrating a possible layout for the asset allocation calculator i
 
 To perform any necessary currency conversion, the following exchange rates endpoint was provided:
 
-` https://api.coinbase.com/v2/exchange-rates?currency=USD
- [//]`
+`https://api.coinbase.com/v2/exchange-rates?currency=USD`
+
+which has API documenation here:
+
+`https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-exchange-rates`
