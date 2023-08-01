@@ -23,7 +23,7 @@ defineProps({
   },
   bgColor: {
     type: String,
-    default: '#B6E5FF',
+    default: '#00A66C',
   },
 });
 </script>
