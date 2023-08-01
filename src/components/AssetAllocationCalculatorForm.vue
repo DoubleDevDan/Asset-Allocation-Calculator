@@ -1,99 +1,109 @@
 <template>
-  <div class="card-content">
-    <form @submit.prevent="submitForm" class="form">
-      <div class="form-row investable-assets-row">
-        <label for="investable-assets">Investable Assets:</label>
-        <div class="input-group flex-nowrap">
-          <input
-            id="investable-assets"
-            type="text"
-            v-model="investableAssets"
-            required
-            pattern="^\$?[0-9]+(\.[0-9][0-9])?$"
-            title="Please enter a valid amount in USD (e.g. $1000.00)"
-            ref="investableAssetsInput"
-            class="investable-assets-input form-control"
-          />
-          <span class="input-group-text">
-            <select
-              id="asset-currency"
-              v-model="assetCurrency"
-              @change="updateCurrencyRates"
-              class="form-control"
-            >
-              <option value="USD">USD</option>
-              <option value="BTC">BTC</option>
-              <option value="ETH">ETH</option>
-            </select>
-          </span>
-        </div>
-      </div>
-      <div class="form-row">
+  <form @submit.prevent="submitForm" class="form">
+    <div class="form-row investable-assets-row">
+      <label for="investable-assets">Investable Assets:</label>
+      <div class="input-group flex-nowrap">
         <input
-          id="opt1-allocation-percentage"
-          type="range"
-          min="0"
-          max="100"
-          v-model="opt1AllocationPercentage"
+          id="investable-assets"
+          type="text"
+          v-model="investableAssets"
           required
-          class="input-range"
+          pattern="^\$?[0-9]+(\.[0-9][0-9])?$"
+          title="Please enter a valid amount in USD (e.g. $1000.00)"
+          ref="investableAssetsInput"
+          class="investable-assets-input form-control"
         />
-      </div>
-      <div class="form-row allocation-row">
-        <label id="opt1-allocation">
-          {{ opt1AllocationPercentage }}%
-          <select v-model="opt1Currency" @change="updateCurrencyRates">
+        <span class="input-group-text">
+          <select
+            id="asset-currency"
+            v-model="assetCurrency"
+            @change="updateCurrencyRates"
+            class="form-control"
+          >
+            <option value="USD">USD</option>
             <option value="BTC">BTC</option>
             <option value="ETH">ETH</option>
-            <option value="USD">USD</option>
           </select>
-          Allocation</label
-        >
+        </span>
+      </div>
+    </div>
+    <div class="form-row">
+      <input
+        id="opt1-allocation-percentage"
+        type="range"
+        min="0"
+        max="100"
+        v-model="opt1AllocationPercentage"
+        required
+        class="input-range"
+      />
+    </div>
+    <div class="form-row allocation-row">
+      <label id="opt1-allocation">
+        {{ opt1AllocationPercentage }}%
+        <select v-model="opt1Currency" @change="updateCurrencyRates">
+          <option value="BTC">BTC</option>
+          <option value="ETH">ETH</option>
+          <option value="USD">USD</option>
+        </select>
+        Allocation</label
+      >
 
-        <label id="opt2-allocation">
-          {{ opt2AllocationPercentage }}%
-          <select v-model="opt2Currency" @change="updateCurrencyRates">
-            <option value="BTC">BTC</option>
-            <option value="ETH">ETH</option>
-            <option value="USD">USD</option>
-          </select>
-          Allocation
-        </label>
-      </div>
-      <div class="form-row">
-        <button type="submit">Submit</button>
-      </div>
-      <div class="form-row">
-        <hr class="divider" />
-      </div>
-      <div class="form-row allocation-row">
-        <div class="opt1-allocation">
-          <div class="form-row">
-            {{ opt1Currency }} Exchange Rate: {{ assetCurrency }} :
-            {{ opt1Currency }} <br />
-            1 : {{ opt1CurrencyRate }}
-          </div>
+      <label id="opt2-allocation">
+        {{ opt2AllocationPercentage }}%
+        <select v-model="opt2Currency" @change="updateCurrencyRates">
+          <option value="BTC">BTC</option>
+          <option value="ETH">ETH</option>
+          <option value="USD">USD</option>
+        </select>
+        Allocation
+      </label>
+    </div>
+    <div class="form-row">
+      <button type="submit">Submit</button>
+    </div>
+    <div class="form-row">
+      <hr class="divider" />
+    </div>
+    <div class="form-row allocation-row">
+      <div class="opt1-allocation">
+        <div class="f">
+          <div class="form-row">{{ assetCurrency }} : {{ opt1Currency }}</div>
+          <div class="form-row">1 : {{ opt1CurrencyRate }}</div>
+        </div>
+        <div>
           <div class="form-row">
             {{ opt1AllocationPercentage }}% Allocation:
+          </div>
+          <div class="form-row">
+            <div v-if="!opt1Allocation">
+              <p>Awaiting submit...</p>
+            </div>
             {{ opt1Allocation }}
           </div>
-        </div>
-        <div class="opt2-allocation">
-          <div class="form-row">
-            {{ opt2Currency }} Exchange Rate: {{ assetCurrency }} :
-            {{ opt1Currency }} <br />
-            1 : {{ opt2CurrencyRate }}
-          </div>
-          <div class="form-row">
-            {{ opt2AllocationPercentage }}% Allocation:
-            {{ opt2Allocation }}
-          </div>
-
-          <!-- Display opt2CurrencyRate -->
+          <div class="form-row">{{ opt1Currency }}</div>
         </div>
       </div>
-    </form>
-  </div>
+      <div class="opt2-allocation">
+        <div class="f">
+          <div class="form-row">{{ assetCurrency }} : {{ opt2Currency }}</div>
+          <div class="form-row">1 : {{ opt2CurrencyRate }}</div>
+        </div>
+        <div>
+          <div class="form-row">
+            {{ opt2AllocationPercentage }}% Allocation:
+          </div>
+          <div class="form-row">
+            <div v-if="!opt2Allocation">
+              <p>Awaiting submit...</p>
+            </div>
+            {{ opt2Allocation }}
+          </div>
+          <div class="form-row">{{ opt2Currency }}</div>
+        </div>
+      </div>
+    </div>
+  </form>
 </template>
 
 <script>
@@ -159,13 +169,6 @@ export default {
 </script>
 
 <style>
-.card-content {
-  margin: 20px 10px 40px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -197,20 +200,6 @@ export default {
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
-}
-
-.opt1-allocation {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 50%;
-}
-
-.opt2-allocation {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 50%;
 }
 
 .flex-nowrap {

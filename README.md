@@ -208,6 +208,47 @@ Justworks appears to use Oatley as their primary typeface. This typeface is not 
   `icon for an Asset Allocation Calculator clear screen application 3D icon, isometric, gradient glass, colourful color matching of all of #B6E5FF #15246D #FFDB7B #F3B715 #9E6405 #65C9A3 #00A66C #017A4E #FF9F82 #DF5A31 #8E2F1A #BAAAF9 #8A73E5 #452C6C, white background, 3D rendering, C4D, blender`
   borrowing colors from the JustWorks style guide. This asset was then exported as a PNG adding a transparency layer, and then added to the project, along with a simple favicon solution (a more exhaustive favicon solution could be implemented in the future).
 
+  #### Initial functionality
+
+  I prioritized getting the basic functionality as laid out in the assignment working first. This included:
+
+  - The ability to input a dollar amount
+  - The ability to calculate the number of units of BTC and ETH to purchase based on the input dollar amount and currency selection
+
+  I designed the application to be very simplistic, as I wanted to design the assignment as a card that could be incorporated into any application. I also wanted to make the application responsive, so I leveraged the flexbox layout to make the application responsive to different screen sizes. I set my card sizes statically to ensure smoothness for a demo, but in the future, it would be better to set the card sizes dynamically based on the screen size.
+
+  For the component structure I built the Application itself, then bring in a Card Component which I give a child component AssetAllocationCalculatorForm where the majority of the functionality will live. This Card Component serves as a reusable component that adds a footer to the card with header and an optional color param. This component could be used to build out other cards in the future, and could be expanded to include positioning and taking an icon as a param.
+
+  In the form component, I built out the basic functionality as lined out in the specs and committed once I was satisfied on it working. I then added some additional functionality to the form, including:
+
+  - The ability to select the asset currency (default is USD to satisfy the parameters of the assignment)
+  - The ability to select the currency to convert to on the left (opt 1) (default is BTC to satisfy the parameters of the assignment)
+  - The ability to select the currency to convert to on the right (opt 2) (default is ETH to satisfy the parameters of the assignment)
+  - The ability to customize the split between opt1 and opt2 (default is 70/30 to satisfy the parameters of the assignment)
+
+  I also saw the opportunity to include more currencies than were in the parameters of the assignment. These would be easy to add later on, and would most likely justify it's own component. These were committed and then I did a round of documentation and cleaning up the code and adding some stylistic improvements including a hover helper tooltip that describes the project briefly.
+
+  #### Future Improvements
+
+  - Add more currencies
+  - Add dark mode
+  - Reset button back to assignment defaults
+  - Reset button back to user defaults (and storage solution and flow for saving user defaults)
+  - Add Component framework (eg Vuetify, MUI Vue, etc)
+  - Add history of rates and ability to select a date to calculate rates from
+  - Add reporting rates over time (eg 1 week, 1 month, 1 year) to give user a better idea of how the rates have changed over time
+  - Add ability to add additional opts (eg opt 3, opt 4, etc) to further split their allocation
+  - Add ability to add portfolio of assets and calculate allocation based on portfolio
+  - Add external integrations to import asset portfolios from other applications (eg Coinbase, Robinhood, etc)
+  - Add storybook to document components
+  - Add pinia for state management
+  - Add more robust error handling
+  - Add more robust documentation
+  - Add more robust testing
+  - Add more robust styling and more consistent styling
+  - Add more robust accessibility
+  - Add more robust responsiveness
+
 ## Take Home Assignment - JustWorks
 
 The take-home assignment for JustWorks involves building an asset allocation calculator as a small web app. The app's primary functionality is to allow users to input a specific amount ($X) they want to allocate between BTC and ETH using a 70/30 split. Based on this input, the app will calculate how many units of BTC and ETH the user should buy.
